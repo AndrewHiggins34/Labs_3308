@@ -16,11 +16,11 @@ function getFarenheitTemp(temp){
 
 //run when the document object model is ready for javascript code to execute
 $(document).ready(function() {
-  var url ='https://api.weatherstack.com/forecast?access_key=5bc82451636190abd9d7afe6fe9b20b5&query=40.015,-105.270&forecast_days=1'; //Place your weatherstack API Call Here - access_key to be used: 5bc82451636190abd9d7afe6fe9b20b5
+  var url ='https://api.weatherstack.com/forecast?access_key=5bc82451636190abd9d7afe6fe9b20b5&query=40.015,-105.270&forecast_days=5'; //Place your weatherstack API Call Here - access_key to be used: 5bc82451636190abd9d7afe6fe9b20b5
 
   $.ajax({url:url, dataType:"jsonp"}).then(function(data) {
-    console.log(data);
-    console.log("Current Temp: " + data.current.temperature);
+    // console.log(data);
+    // console.log("Current Temp: " + data.current.temperature);
 
 //  1. image_today : This should display an image for today's weather.
     document.getElementById("image_today").src = data.current.weather_icons;
@@ -48,18 +48,31 @@ $(document).ready(function() {
         dayOfWeek=week_names[new Date(Object.keys(data.forecast)[i]).getDay()];
         return data.forecast[Object.keys(data.forecast)[i]];
     }
-    // var data = tostring(data.forecast);
-    //console.log(getKey(1).dayOfWeek);
-    // console.log(data.forecast.object.maxtemp);
-    // console.log(data.forecast.mintemp);
-    // console.log(data.forecast.astro.sunrise);
-    // console.log(data.forecast.astro.sunset);
-    /* Process the daily forecast for the next 5 days */
+
+   for(var x = 0; x < 6; x++){
+     console.log(getKey(x));
+   }
+
+   forecastCards(data);
+
+   function forecastCards(data){
+     var week_names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+     var table = document.getElementById("5_day_forecast");
+     for(var i = 1; i < 6; i++){
+      var card1 = '<div style="width: 20%;"><div class="card"><div class="card-body"><h5 class="card-title">'
+      var card2 = '</h5><p class="card-text">High:'
+      var card3 = '<br>Low:'
+      var card4 = '</p></div></div></div>'
+      table.innerHTML += card1+week_names[i]+card2+getKey(i).maxtemp+'<br>Low:'+getKey(i).mintemp+card3+getKey(i).mintemp+
+      '<br>Sunrise:'+getKey(i).astro.sunrise+'<br>Sunset:'+getKey(i).astro.sunset+card4;
+     }
+   }
 
 /*
       Each card should use the following format:
+
       <div style="width: 20%;">
-        <div class="card">
+        <div class="card" id="day5">
           <div class="card-body">
             <h5 class="card-title"><!-- List Day of the Week Here --></h5>
             <p class="card-text">High:<!--List Temperature High --> <br>
