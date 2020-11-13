@@ -16,7 +16,7 @@ function getFarenheitTemp(temp){
 
 //run when the document object model is ready for javascript code to execute
 $(document).ready(function() {
-  var url ='https://api.weatherstack.com/forecast?access_key=5bc82451636190abd9d7afe6fe9b20b5&query=40.015,-105.270&forecast_days=5'; //Place your weatherstack API Call Here - access_key to be used: 5bc82451636190abd9d7afe6fe9b20b5
+  var url ='https://api.weatherstack.com/forecast?access_key=5bc82451636190abd9d7afe6fe9b20b5&query=40.015,-105.270&forecast_days=5&units=f'; //Place your weatherstack API Call Here - access_key to be used: 5bc82451636190abd9d7afe6fe9b20b5
 
   $.ajax({url:url, dataType:"jsonp"}).then(function(data) {
     // console.log(data);
