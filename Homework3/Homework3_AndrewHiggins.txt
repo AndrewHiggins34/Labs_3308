@@ -1,0 +1,329 @@
+Homework #3
+Your name: Andrew Higgins
+
+
+---------------------------------------- Question 1 Query ---------------------------------------- 
+
+SELECT count(*) FROM payment WHERE (amount = 4.99);
+SELECT count(rental_id) FROM payment WHERE (amount = 4.99);
+
+---------------------------------------- Question 1 Results ---------------------------------------- 					
+
+-------
+  3789
+(1 row)
+
+
+---------------------------------------- Question 2 Query ---------------------------------------- 
+
+SELECT last_name, first_name FROM customer WHERE (active = 0) ORDER BY last_name;
+
+---------------------------------------- Question 2 Results ---------------------------------------- 					
+
+
+ last_name | first_name 
+-----------+------------
+ ARCE      | HARRY
+ COX       | JUDITH
+ CRAWLEY   | MAURICE
+ CULP      | THEODORE
+ EASTER    | BEN
+ EGGLESTON | JIMMIE
+ GOODEN    | KENNETH
+ JUNG      | CHRISTIAN
+ LARSON    | HEIDI
+ MARTIN    | SANDRA
+ MATTHEWS  | ERICA
+ NEAL      | PENNY
+ ROUSH     | TERRANCE
+ RUNYON    | NATHAN
+ WELLS     | SHEILA
+(15 rows)
+
+
+---------------------------------------- Question 3 Query ---------------------------------------- 
+
+SELECT max(amount) FROM payment;
+SELECT payment_id, amount, payment_date FROM payment WHERE (amount = 11.99);
+
+---------------------------------------- Question 3 Results ---------------------------------------- 					
+
+postgres=# SELECT max(amount) FROM payment;
+  max  
+-------
+ 11.99
+(1 row)
+
+postgres=# 
+postgres=# SELECT payment_id, amount, payment_date FROM payment WHERE (amount = 11.99);
+ payment_id | amount |         payment_date          
+------------+--------+-------------------------------
+      17055 |  11.99 | 2017-01-25 16:46:45.996577-08
+      17354 |  11.99 | 2017-02-17 22:19:47.996577-08
+      20403 |  11.99 | 2017-03-21 21:57:24.996577-07
+      22650 |  11.99 | 2017-03-22 22:17:22.996577-07
+      23757 |  11.99 | 2017-03-21 22:02:26.996577-07
+      24553 |  11.99 | 2017-03-23 20:47:59.996577-07
+      24866 |  11.99 | 2017-03-02 20:46:39.996577-08
+      28799 |  11.99 | 2017-04-07 19:14:17.996577-07
+      28814 |  11.99 | 2017-04-06 21:26:57.996577-07
+      29136 |  11.99 | 2017-04-29 21:06:07.996577-07
+(10 rows)
+
+
+---------------------------------------- Question 4 Query ---------------------------------------- 
+
+SELECT count(*) FROM film WHERE language_id = 1;
+
+SELECT count(*) FROM film INNER JOIN language ON language.language_id = film.language_id WHERE language.language_id = 1;
+
+
+---------------------------------------- Question 4 Results ---------------------------------------- 	
+				
+postgres=# SELECT count(*) FROM film WHERE language_id = 1;
+ count 
+-------
+  1000
+(1 row)
+
+-------
+  1000
+(1 row)
+
+
+---------------------------------------- Question 5 Query ---------------------------------------- 
+
+										put query here
+
+---------------------------------------- Question 5 Results ---------------------------------------- 					
+
+										put result here	(output of the table)	
+
+---------------------------------------- Question 6 Query ---------------------------------------- 
+
+SELECT customer_id, Sum(amount) as total_amount FROM payment Where customer_id>500 Group By customer_id;
+
+---------------------------------------- Question 6 Results ---------------------------------------- 					
+
+ customer_id | total_amount 
+-------------+--------------
+         550 |       159.68
+         539 |        90.78
+         554 |       101.78
+         576 |       139.66
+         509 |       100.80
+         556 |        83.79
+         529 |       118.71
+         502 |       138.66
+         587 |       108.74
+         578 |        96.78
+         506 |       152.65
+         508 |       127.75
+         599 |        83.81
+         596 |        96.72
+         512 |       115.74
+         523 |        93.78
+         538 |       117.71
+         595 |       117.70
+         534 |        88.76
+         597 |        99.75
+         548 |        79.81
+         501 |        89.79
+         545 |        89.79
+         528 |       111.75
+         563 |       110.71
+         557 |        73.76
+         559 |       110.72
+         513 |       148.69
+         589 |       129.72
+         555 |        74.83
+         522 |       167.67
+         567 |        85.80
+         575 |       126.71
+         507 |        95.75
+         543 |        82.78
+         565 |       126.71
+         566 |       141.66
+         551 |        96.74
+  	 532 |       152.68
+         592 |       111.71
+         553 |       107.76
+         519 |       103.77
+         521 |        80.77
+         558 |       135.72
+         540 |       112.76
+         598 |        83.78
+         526 |       221.55
+         524 |        87.81
+         588 |       115.71
+         586 |        64.81
+         572 |       108.75
+         593 |       113.74
+         549 |        77.80
+         552 |        90.79
+         541 |       108.76
+         577 |       118.72
+         505 |        97.79
+         561 |        96.73
+         525 |        74.81
+         531 |       118.75
+         546 |       107.74q
+         562 |       109.75
+         537 |       103.75
+         581 |       107.73
+         591 |       134.73
+         503 |       115.68
+         573 |       120.71
+         517 |       105.75
+         585 |       117.76
+         511 |        99.76
+         514 |        74.78
+         582 |       113.75
+         504 |       133.72
+         560 |       132.70
+         547 |        99.77
+         518 |       111.74
+         583 |       117.77
+         569 |       134.68
+         527 |        81.76
+         590 |       112.75
+         564 |        91.76
+         535 |       135.68
+         579 |       111.73
+         510 |       122.74
+         584 |       129.70
+         515 |       126.72
+         574 |       109.72
+         571 |       121.76
+         516 |        98.74
+         542 |        94.82
+         594 |       130.73
+         533 |       141.67
+         568 |        66.79
+         544 |        98.78
+         570 |        99.74
+         580 |        99.73
+         530 |        76.77
+         536 |       117.75
+         520 |       134.68
+(99 rows)
+
+
+---------------------------------------- Question 7 Query ---------------------------------------- 
+
+SELECT SUM(amount) FROM payment INNER JOIN rental ON rental.rental_id = payment.rental_id INNER JOIN inventory ON inventory.inventory_id = rental.inventory_id INNER JOIN film ON film.film_id = inventory.film_id INNER JOIN film_category ON film_category.film_id = film.film_id GROUP BY film_category.category_id;
+
+This one really sucked...
+
+---------------------------------------- Question 7 Results ---------------------------------------- 					
+
+---------
+ 3639.59
+ 4756.98
+ 3655.55
+ 4270.67
+ 4361.57
+ 4281.33
+ 4587.39
+ 4375.85
+ 4383.58
+ 4656.30
+ 3549.64
+ 5314.21
+ 4217.52
+ 3417.72
+ 4226.07
+ 3722.54
+(16 rows)
+
+
+---------------------------------------- Question 8 Query ---------------------------------------- 
+
+SELECT count(rental_id) FROM rental r inner join customer c on c.customer_id=r.customer_id Where first_name='JOHN' and last_name='FARNSWORTH';
+
+
+---------------------------------------- Question 8 Results ---------------------------------------- 					
+
+-------
+    31
+(1 row)
+
+---------------------------------------- Question 9 Query ---------------------------------------- 
+
+SELECT count(*) FROM payment WHERE payment_date < '2017-01-27';
+
+---------------------------------------- Question 9 Results ---------------------------------------- 					
+
+postgres=# SELECT count(*) FROM payment WHERE payment_date < '2017-01-27';
+ count 
+-------
+   328
+(1 row)
+
+
+---------------------------------------- Question 10 Query ---------------------------------------- 
+
+CREATE TABLE if not exists short_films(film_id integer not null primary key,
+                           title varchar(40) not null, length integer not null,
+                           replacement_cost decimal(9,2)not null, 
+                           rating varchar(5) not null);
+
+	
+---------------------------------------- Question 11 Query ---------------------------------------- 
+
+INSERT INTO short_films(SELECT film_id, title, length, replacement_cost, rating FROM film WHERE length < 50);
+INSERT 0 28
+postgres=# SELECT * FROM short_films;
+ film_id |        title        | length | replacement_cost | rating 
+---------+---------------------+--------+------------------+--------
+       2 | ACE GOLDFINGER      |     48 |            12.99 | G
+      15 | ALIEN CENTER        |     46 |            10.99 | NC-17
+     237 | DIVORCE SHINING     |     47 |            21.99 | G
+     243 | DOORS PRESIDENT     |     49 |            22.99 | NC-17
+     247 | DOWNHILL ENOUGH     |     47 |            19.99 | G
+     384 | GROSSE WONDERFUL    |     49 |            19.99 | R
+     393 | HALLOWEEN NUTS      |     47 |            19.99 | PG-13
+     398 | HANOVER GALAXY      |     47 |            21.99 | NC-17
+     407 | HAWK CHILL          |     47 |            12.99 | PG-13
+     410 | HEAVEN FREEDOM      |     48 |            19.99 | PG
+     411 | HEAVENLY GUN        |     49 |            13.99 | NC-17
+     430 | HOOK CHARIOTS       |     49 |            23.99 | G
+     443 | HURRICANE AFFAIR    |     49 |            11.99 | PG
+     469 | IRON MOON           |     46 |            27.99 | PG
+     504 | KWAI HOMEWARD       |     46 |            25.99 | PG-13
+     505 | LABYRINTH LEAGUE    |     46 |            24.99 | PG-13
+     575 | MIDSUMMER GROUNDHOG |     48 |            27.99 | G
+     630 | NOTTING SPEAKEASY   |     48 |            19.99 | PG-13
+     634 | ODDS BOOGIE         |     48 |            14.99 | NC-17
+     657 | PARADISE SABRINA    |     48 |            12.99 | PG-13
+     670 | PELICAN COMFORTS    |     48 |            17.99 | PG
+     730 | RIDGEMONT SUBMARINE |     46 |            28.99 | PG-13
+     753 | RUSH GOODFELLAS     |     48 |            20.99 | PG
+     784 | SHANGHAI TYCOON     |     47 |            20.99 | PG
+     845 | STEPMOM DREAM       |     48 |             9.99 | NC-17
+     866 | SUNSET RACER        |     48 |            28.99 | NC-17
+     869 | SUSPECTS QUILLS     |     47 |            22.99 | PG
+     931 | VALENTINE VANISHING |     48 |             9.99 | PG-13
+(28 rows)
+
+---------------------------------------- Question 12 Query ---------------------------------------- 
+
+DELETE FROM short_films WHERE (replacement_cost > 19.99);
+DELETE 13
+
+
+---------------------------------------- Question 13 Query ---------------------------------------- 
+
+ALTER TABLE short_films ADD stars integer default 5;
+
+---------------------------------------- Question 14 Query ---------------------------------------- 
+
+ALTER TABLE short_films RENAME COLUMN length TO length_min;
+ALTER TABLE short_films ADD length_sec integer;
+Update short_films SET length_sec = (length_min*60);
+
+---------------------------------------- Question 15 Query ---------------------------------------- 
+
+DROP TABLE short_films;
+
+
