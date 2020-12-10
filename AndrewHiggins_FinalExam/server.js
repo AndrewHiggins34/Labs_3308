@@ -37,7 +37,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));//This line is necessary for us to use relative paths and access our resources directory
 
 
-// login page
+// Home page
 app.get('/', function(req, res) {
 	res.render('pages/main',{
 		local_css:"resources/css/style",
@@ -45,13 +45,22 @@ app.get('/', function(req, res) {
 	});
 });
 
-// // registration page
-// app.get('/register', function(req, res) {
-// 	res.render('pages/register',{
-// 		my_title:"Registration Page"
-// 	});
-// });
-//
+// registration page
+app.get('/main', function(req, res) {
+	res.render('pages/main',{
+		my_title:"Search Page"
+	});
+});
+
+// registration page
+app.get('/reviews', function(req, res) {
+	res.render('pages/reviews',{
+		my_title:"Reviews Page"
+	});
+});
+
+
+
 // /*Add your other get/post request handlers below here: */
 // app.get('/home', function(req, res) {
 // 	var query = 'select * from favorite_colors;';
